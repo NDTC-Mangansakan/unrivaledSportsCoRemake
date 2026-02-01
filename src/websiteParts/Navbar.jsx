@@ -1,3 +1,4 @@
+import { ScrollSmoother } from "gsap/ScrollSmoother"
 
 const navLinks = [
     { link: '#jerseys', text: 'Jerseys'},
@@ -8,6 +9,16 @@ const navLinks = [
 ]
 
 const Navbar = () => {
+
+    const smoother = ScrollSmoother.create({
+        smooth: 2,
+        effects: true
+    })
+
+    const handleSmoothNav = (link) => {
+        smoother.scrollTo(link, true, 'top top')
+    }
+
     return (
         <>
             {/* Banner */}
@@ -19,11 +30,12 @@ const Navbar = () => {
             <nav className='py-5 sticky top-0 flex justify-between items-center bg-transparent backdrop-blur-sm px-[10%] border-b border-gray-200 z-99'>
                 <div className="flex items-center gap-x-10">
                     {navLinks.map((link, i) => (
-                        <a key={link.link} 
-                           href={link.link} 
-                            className={`${i === navLinks.length - 1 && 'px-5 sm:px-10 py-2 rounded-full bg-[#e1ff01]'} ${i !== navLinks.length - 1 && 'hidden lg:inline'}`}>
+                        <button 
+                            key={link.link}  
+                            onClick={() => handleSmoothNav(link.link)}
+                            className={`${i === navLinks.length - 1 && 'px-5 sm:px-10 py-2 rounded-full bg-[#e1ff01]'} ${i !== navLinks.length - 1 && 'hidden lg:inline'} cursor-pointer`}>
                             {link.text}
-                        </a>
+                        </button>
                     ))}
                 </div>
 
