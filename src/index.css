@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+/* For Chrome, Safari */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* For Firefox */
+body {
+  scrollbar-width: none;
+}
+
+/* For IE/Edge */
+body {
+  -ms-overflow-style: none;
+}
+
+
+@theme{
+  --color-primary: #ff5d2b;
+}
+
+html{
+  scroll-padding-top: 11.5vh;
+  scroll-behavior: smooth;
+}
+
+body{
+  @apply font-serif
+}
